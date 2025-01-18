@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micha Gersting - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Tailwind Custom Configuration */
+    @layer base {
+      body {
+        background-color: #efefef; /* Hellgrau als Hintergrundfarbe */
+        color: #333333; /* Dunkelgrau für den Text */
+      }
+      .accent {
+        color: #ffcc00; /* Gelb für Akzente */
+      }
+      .accent-bg {
+        background-color: #ffcc00; /* Gelb für Hintergrund-Akzente */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="accent-bg text-black py-5">
+    <h1 class="text-3xl font-bold text-center">Micha Gersting - Portfolio</h1>
+  </header>
+
+  <!-- About Me Section -->
+<section class="py-10 px-5">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-5">
+      <!-- Image Section with Auto-Switch -->
+      <div class="relative w-48 h-48 rounded-full shadow-lg border-4 border-accent overflow-hidden">
+        <img id="switching-image" src="bewerbungsbild.JPG" alt="Micha Gersting" class="w-full h-full object-cover">
+      </div>
+      <!-- Text Section -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-3 accent">Hi, I'm Micha Gersting!</h2>
+        <p>
+            I am a passionate Data Scientist on a continuous journey of learning and growth.
+             Thanks to the support of my wife, I am able to pursue my dreams and take on every challenge with confidence
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    // JavaScript to switch images
+    const imageElement = document.getElementById('switching-image');
+    const images = ['bewerbungsbild.jpg', 'hochzeitsbild.jpg']; // Add your image paths here
+    let currentImageIndex = 0;
+  
+    setInterval(() => {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      imageElement.src = images[currentImageIndex];
+    }, 6000); // Switch every 3 seconds
+  </script>
+
+  <!-- Projects Section -->
+  <section class="py-10 px-5">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold mb-5 text-center accent">My Projects</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <!-- Project 1 -->
+        <div class="shadow-lg bg-white border-2 border-accent">
+          <img src="appointo.png" alt="Project 1" class="rounded-t-lg">
+          <div class="p-5">
+            <h3 class="text-lg font-bold accent">Small SaaS Project:</h3>
+            <p>Currently under development using Flask, this SaaS aims to simplify scheduling appointments with registered service providers, 
+                such as hairdressers or consultants. The platform is designed to streamline the booking process and enhance user experience</p>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="shadow-lg bg-white border-2 border-accent">
+          <img src="knime_workflow.png" alt="Project 2" class="rounded-t-lg">
+          <div class="p-5">
+            <h3 class="text-lg font-bold accent">University KNIME-Project</h3>
+            <p>I developed a Decision Tree model for target group analysis, leveraging KNIME's capabilities. The project focused on identifying
+            and segmenting customer groups based on their unique characteristics, providing valuable insights for marketing and strategy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links Section -->
+  <footer class="accent-bg text-black py-5">
+    <div class="text-center">
+      <h2 class="text-lg font-semibold">Find me online</h2>
+      <div class="flex justify-center gap-5 mt-3">
+        <a href="https://www.youtube.com/@michagersting5964" target="_blank" class="px-4 py-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white">
+          YouTube
+        </a>
+        <a href="https://www.instagram.com/data.br3w/" target="_blank" class="px-4 py-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white">
+          Instagram
+        </a>
+        <a href="https://www.linkedin.com/in/micha-gersting-a17130245" target="_blank" class="px-4 py-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white">
+            LinkedIn
+          </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
