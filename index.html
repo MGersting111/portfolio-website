@@ -19,6 +19,14 @@
         background-color: #ffcc00; /* Gelb für Hintergrund-Akzente */
       }
     }
+
+      .project-image {
+        max-width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+      }
   </style>
 </head>
 <body>
@@ -47,7 +55,7 @@
       <div class="grid gap-8 md:grid-cols-2">
         <!-- Project 1 -->
         <div class="shadow-lg bg-white border-2 border-accent">
-          <img src="appointo.png" alt="Project 1" class="rounded-t-lg">
+          <img src="appointo.png" alt="Project 1" class="rounded-t-lg project-image">
           <div class="p-5">
             <h3 class="text-lg font-bold accent">Small SaaS Project:</h3>
             <p>Currently under development using Flask, this SaaS aims to simplify scheduling appointments with registered service providers, 
@@ -55,7 +63,7 @@
           </div>
         </div>
          <div class="shadow-lg bg-white border-2 border-accent">
-          <img src="cafe-app.png" alt="Project 1" class="rounded-t-lg">
+          <img src="cafe-app.png" alt="Project 1" class="rounded-t-lg project-image">
           <div class="p-5">
             <h3 class="text-lg font-bold accent">Ordering-Management-App:</h3>
             <p>A small Web-App developed with Ruby on Rails in my internship @ioki. 
@@ -64,7 +72,7 @@
         </div>
         <!-- Project 2 -->
         <div class="shadow-lg bg-white border-2 border-accent">
-          <img src="knime_workflow.png" alt="Project 2" class="rounded-t-lg">
+          <img src="knime_workflow.png" alt="Project 2" class="rounded-t-lg project-image">
           <div class="p-5">
             <h3 class="text-lg font-bold accent">University KNIME-Project</h3>
             <p>I developed a Decision Tree model for target group analysis, leveraging KNIME's capabilities. The project focused on identifying
@@ -73,9 +81,9 @@
         </div>
          <div class="shadow-lg bg-white border-2 border-accent">
           <div class="relative">
-            <img src="temp_trac1.png" alt="TempTrac Image 1" class="rounded-t-lg w-full slider-image">
-            <img src="temp_trac2.png" alt="TempTrac Image 2" class="rounded-t-lg w-full slider-image hidden">
-            <img src="temp_trac3.png" alt="TempTrac Image 3" class="rounded-t-lg w-full slider-image hidden">
+            <img src="temp_trac1.png" alt="TempTrac Image 1" class="rounded-t-lg w-full slider-image project-image">
+            <img src="temp_trac2.png" alt="TempTrac Image 2" class="rounded-t-lg w-full slider-image hidden project-image">
+            <img src="temp_trac3.png" alt="TempTrac Image 3" class="rounded-t-lg w-full slider-image hidden project-image">
           </div>
           <div class="p-5">
             <h3 class="text-lg font-bold accent">TempTrac App</h3>
@@ -109,5 +117,21 @@
     </div>
   </footer>
 
+    <script>
+    const images = document.querySelectorAll('.slider-image');
+    let currentIndex = 0;
+
+    document.getElementById('next').addEventListener('click', () => {
+      images[currentIndex].classList.add('hidden');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.remove('hidden');
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      images[currentIndex].classList.add('hidden');
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      images[currentIndex].classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
