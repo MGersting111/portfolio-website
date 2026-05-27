@@ -1,163 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Micha Gersting - Portfolio</title>
+  <title>Micha Gersting | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Tailwind Custom Configuration */
-    @layer base {
-      body {
-        background-color: #efefef; /* Hellgrau als Hintergrundfarbe */
-        color: #333333; /* Dunkelgrau für den Text */
-      }
-      .accent {
-        color: #44546A; /* Gelb für Akzente */
-      }
-      .accent-bg {
-        background-color: #44546A; /* Gelb für Hintergrund-Akzente */
-      }
+    :root {
+      color-scheme: dark;
+      --bg-start: #0b1120;
+      --bg-end: #131c35;
+      --card: rgba(20, 30, 56, 0.72);
+      --stroke: rgba(130, 152, 198, 0.25);
+      --accent: #7dd3fc;
+      --accent-soft: #38bdf8;
+      --text-main: #e2e8f0;
+      --text-soft: #a7b6d9;
     }
 
-      .project-image {
-        max-width: 100%;
-        max-height: 400px;
-        object-fit: contain;
-        width: 100%;
-        height: auto;
-      }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 15% 15%, #1f3b8f 0%, transparent 35%),
+                  radial-gradient(circle at 80% 0%, #0f766e 0%, transparent 35%),
+                  linear-gradient(140deg, var(--bg-start), var(--bg-end));
+      color: var(--text-main);
+      font-family: "Inter", "Segoe UI", sans-serif;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      backdrop-filter: blur(14px);
+    }
+
+    .section-title {
+      color: #f8fafc;
+      letter-spacing: 0.02em;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+    }
+
+    .glow {
+      box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.3), 0 12px 35px rgba(14, 116, 144, 0.25);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(125, 211, 252, 0.4);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -0.55rem;
+      top: 0.1rem;
+      width: 0.9rem;
+      height: 0.9rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.75);
+    }
+
+    .pulse {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translateY(0); box-shadow: 0 10px 25px rgba(14, 116, 144, 0.2); }
+      50% { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(14, 116, 144, 0.35); }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="accent-bg text-black py-5">
-    <h1 class="text-3xl font-bold text-center text-white">Micha Gersting - Portfolio</h1>
+  <header class="px-6 pt-10 pb-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="glass rounded-3xl p-8 md:p-10 glow reveal">
+        <div class="grid md:grid-cols-[1.35fr_0.9fr] gap-8 items-center">
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-cyan-300 mb-3">Data, Product & People</p>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight section-title">Micha Gersting</h1>
+            <p class="mt-4 text-lg text-slate-200">Ich baue datengetriebene Produkte mit Fokus auf echten Mehrwert: klar strukturiert, modern umgesetzt und immer mit Blick auf die Nutzer:innen.</p>
+            <p class="mt-4 text-slate-300">Von Data Science über App-Ideen bis zum Startup-Ansatz – mein Ziel ist es, aus Ideen schnell Produkte zu machen, die im Alltag wirklich helfen.</p>
+          </div>
+          <div class="pulse">
+            <img src="bewerbungsbild.JPG" alt="Micha Gersting" class="w-full h-[340px] object-cover rounded-2xl border border-cyan-300/30">
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section class="py-10 px-5">
-    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-5">
-      <div>
-        <h2 class="text-2xl font-semibold mb-3 accent">Hi, I'm Micha Gersting!</h2>
-        <p>
-          I'm a passionate Junior Data Scientist and Software Developer with experience in Data Science and App Development,
-          I love building projects, learning new things, and sharing knowledge on Social-Media.
-        </p>
+  <main class="px-6 pb-10">
+    <section class="max-w-6xl mx-auto mt-10 reveal" id="resume">
+      <h2 class="text-3xl font-bold section-title mb-6">Lebenslauf Highlights</h2>
+      <div class="glass rounded-3xl p-6 md:p-8 space-y-7">
+        <div class="timeline-item">
+          <p class="text-cyan-300 font-semibold">Bachelorabschluss – Note 1,6</p>
+          <p class="text-slate-300 mt-1">Fundierte analytische Ausbildung mit Schwerpunkt auf datenorientierter Problemlösung und praxisnahen Projekten.</p>
+        </div>
+        <div class="timeline-item">
+          <p class="text-cyan-300 font-semibold">Werkstudium bei Sinovo</p>
+          <p class="text-slate-300 mt-1">Mitarbeit an digitalen Prozessen und operativen Lösungen – Schnittstelle zwischen Technik und Business.</p>
+        </div>
+        <div class="timeline-item">
+          <p class="text-cyan-300 font-semibold">Praktikum bei KPMG</p>
+          <p class="text-slate-300 mt-1">Einblicke in datenbasierte Beratung, strukturierte Analyse und professionelle Kundenarbeit im Unternehmensumfeld.</p>
+        </div>
+        <div class="timeline-item">
+          <p class="text-cyan-300 font-semibold">Berufserfahrung bei Dymatrix</p>
+          <p class="text-slate-300 mt-1">Arbeit an datengetriebenen Use Cases mit Fokus auf umsetzbare Insights und nachhaltige Produktentwicklung.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section class="py-10 px-5">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold mb-5 text-center accent">My Projects</h2>
+    <section class="max-w-6xl mx-auto mt-14" id="projects">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-6 reveal">
+        <h2 class="text-3xl font-bold section-title">Projekte</h2>
+        <p class="text-slate-300">Neu sortiert nach Produktnähe, Wirkung und technischem Scope.</p>
+      </div>
+
       <div class="grid gap-8 md:grid-cols-2">
-        <!-- Project 1 -->
-        <div class="shadow-lg bg-white border-2 border-accent">
-          <img src="appointo.png" alt="Project 1" class="rounded-t-lg project-image">
-          <div class="p-5">
-            <h3 class="text-lg font-bold accent">Small SaaS Project:</h3>
-            <p>Currently under development using Flask, this SaaS aims to simplify scheduling appointments with registered service providers, 
-                such as hairdressers or consultants. The platform is designed to streamline the booking process and enhance user experience</p>
-          </div>
-        </div>
-         <div class="shadow-lg bg-white border-2 border-accent">
-          <img src="data_flow_diagram.drawio.png" alt="Project 1" class="rounded-t-lg project-image">
-          <div class="p-5">
-            <h3 class="text-lg font-bold accent">Data Warehouse Project:</h3>
-            <p>I built a fully documented Data Warehouse, providing a complete overview of its architecture, design, and implementation.  
-            The documentation is available here: <a href="https://github.com/MGersting111/sql-data-warehouse-project" target="_blank">GitHub repository</a></p>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="shadow-lg bg-white border-2 border-accent">
-          <img src="knime_workflow.png" alt="Project 2" class="rounded-t-lg project-image">
-          <div class="p-5">
-            <h3 class="text-lg font-bold accent">University KNIME-Project</h3>
-            <p>I developed a Decision Tree model for target group analysis, leveraging KNIME's capabilities. The project focused on identifying
-            and segmenting customer groups based on their unique characteristics, providing valuable insights for marketing and strategy</p>
-          </div>
-        </div>
-         <div class="shadow-lg bg-white border-2 border-accent">
+        <article class="glass rounded-3xl overflow-hidden reveal md:col-span-2 glow">
           <div class="relative">
-            <img src="temp_trac1.png" alt="TempTrac Image 1" class="rounded-t-lg w-full slider-image project-image">
-            <img src="temp_trac2.png" alt="TempTrac Image 2" class="rounded-t-lg w-full slider-image hidden project-image">
-            <img src="temp_trac3.png" alt="TempTrac Image 3" class="rounded-t-lg w-full slider-image hidden project-image">
+            <img src="1.png" alt="PaprFree Vorschau" class="project-image paprfree-image">
           </div>
+          <div class="p-6">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <h3 class="text-2xl font-bold text-cyan-300">PaprFree</h3>
+              <a href="https://paprfree-landing.vercel.app/#why" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-1 rounded-full border border-cyan-300/40 text-cyan-200 hover:bg-cyan-300/10">Website ansehen</a>
+            </div>
+            <p class="text-slate-300">Mein Startup-Fokusprojekt: PaprFree digitalisiert dokumentenlastige Abläufe und macht Workflows schneller, transparenter und deutlich papierärmer.</p>
+            <div class="flex flex-wrap gap-2 mt-4" id="paprfree-thumbs">
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="1.png">1</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="2.png">2</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="3.png">3</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="4.png">4</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="5.png">5</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="6.png">6</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="7.png">7</button>
+              <button class="px-3 py-1 text-sm border border-cyan-300/40 rounded-full hover:bg-cyan-300/10" data-image="8.png">8</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass rounded-3xl overflow-hidden reveal">
+          <img src="data_flow_diagram.drawio.png" alt="Data Warehouse Projekt" class="project-image">
           <div class="p-5">
-            <h3 class="text-lg font-bold accent">TempTrac App</h3>
-            <p>A handy mobile app designed to track your daily activities. With an intuitive UI and seamless functionality, TempTrac helps users stay organized and productive by monitoring their tasks and time allocation effectively.</p>
-            <button id="prev" class="px-3 py-1 border border-accent text-accent hover:bg-accent hover:text-black rounded">Previous</button>
-            <button id="next" class="px-3 py-1 border border-accent text-accent hover:bg-accent hover:text-black rounded">Next</button>
+            <h3 class="text-xl font-semibold text-cyan-300">Data Warehouse End-to-End</h3>
+            <p class="text-slate-300 mt-2">Konzeption und Dokumentation eines vollständigen Data-Warehouse-Setups inkl. Architektur, Modellierung und Umsetzung.</p>
+            <a href="https://github.com/MGersting111/sql-data-warehouse-project" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-cyan-200 underline">GitHub Repository</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </article>
 
-<!-- Certificates Section -->
-<section class="py-10 px-5">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-5 text-center accent">My Certificates</h2>
-    <div class="grid gap-8">
-      <!-- Certificate 1 -->
-      <div class="shadow-lg bg-white border-2 border-accent p-5">
-        <h3 class="text-lg font-bold accent flex items-center gap-2">
-          <img src="ibm-logo.png" alt="IBM Logo" class="w-6 h-6"> IBM Data Science Certificate
-        </h3>
-        <p>
-          I successfully completed a Data Science course and received a certificate. You can view it
-          <a href="IBM Data_Science.pdf" target="_blank" class="text-blue-600 underline hover:text-blue-800">here</a>.
-        </p>
-      </div>
-      <!-- Certificate 2 -->
-      <div class="shadow-lg bg-white border-2 border-accent p-5">
-        <h3 class="text-lg font-bold accent flex items-center gap-2">
-          <img src="meta-logo.jpeg" alt="Meta Logo" class="w-6 h-6"> Meta Data Analyst Certificate
-        </h3>
-        <p>
-          I successfully completed a Data Analytics course and received a certificate. You can view it
-          <a href="Meta Data Analyst.pdf" target="_blank" class="text-blue-600 underline hover:text-blue-800">here</a>.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+        <article class="glass rounded-3xl overflow-hidden reveal">
+          <img src="appointo.png" alt="SaaS Projekt Appointo" class="project-image">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-cyan-300">Appointo (SaaS)</h3>
+            <p class="text-slate-300 mt-2">Terminmanagement für Dienstleister mit klarem UX-Fokus – vom Booking bis zur effizienten Tagesplanung.</p>
+          </div>
+        </article>
 
+        <article class="glass rounded-3xl overflow-hidden reveal">
+          <img src="knime_workflow.png" alt="KNIME Workflow" class="project-image">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-cyan-300">KNIME Decision Tree</h3>
+            <p class="text-slate-300 mt-2">Target-Group-Analyse auf Basis eines Decision-Tree-Modells mit klaren Segmentierungslogiken für Marketingentscheidungen.</p>
+          </div>
+        </article>
 
-  <!-- Links Section -->
-  <footer class="accent-bg text-black py-5">
-    <div class="text-center">
-      <h2 class="text-lg font-semibold text-white">Find me online</h2>
-      <div class="flex justify-center gap-5 mt-3">
-        <a href="https://www.instagram.com/data.br3w/" target="_blank" class="px-4 py-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white">
-          Instagram
-        </a>
-        <a href="https://www.linkedin.com/in/micha-gersting-a17130245" target="_blank" class="px-4 py-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white">
-            LinkedIn
-          </a>
-        <a href="https://github.com/MGersting111" target="_blank" class="px-4 py-2 border-2 border-black bg-white text-black hover:bg-black hover:text-white">
-            Github
-          </a>
+        <article class="glass rounded-3xl overflow-hidden reveal">
+          <img src="cafe-app.png" alt="Cafe App" class="project-image">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-cyan-300">Cafe App</h3>
+            <p class="text-slate-300 mt-2">Leichtgewichtige App-Idee mit Fokus auf nutzerfreundliche Prozesse und stabilem, pragmatischem Feature-Set.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mt-14 reveal" id="certificates">
+      <h2 class="text-3xl font-bold section-title mb-6">Zertifikate</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="glass rounded-3xl p-5">
+          <h3 class="text-xl font-semibold text-cyan-300 flex items-center gap-2"><img src="ibm-logo.png" alt="IBM Logo" class="w-6 h-6"> IBM Data Science</h3>
+          <p class="text-slate-300 mt-2">Vertiefung in Data-Science-Methoden, Modellierung und praktischer Datenanalyse.</p>
+          <a href="IBM Data_Science.pdf" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-cyan-200 underline">Zertifikat öffnen</a>
+        </article>
+        <article class="glass rounded-3xl p-5">
+          <h3 class="text-xl font-semibold text-cyan-300 flex items-center gap-2"><img src="meta-logo.jpeg" alt="Meta Logo" class="w-6 h-6"> Meta Data Analyst</h3>
+          <p class="text-slate-300 mt-2">Praxisnahe Analytics-Ansätze von Datenaufbereitung bis Reporting und Interpretation.</p>
+          <a href="Meta Data Analyst.pdf" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-cyan-200 underline">Zertifikat öffnen</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-6 pb-10 pt-6">
+    <div class="max-w-6xl mx-auto glass rounded-3xl p-6 text-center reveal">
+      <h2 class="text-xl font-semibold text-slate-100">Let’s connect</h2>
+      <div class="flex flex-wrap justify-center gap-3 mt-4">
+        <a href="https://www.instagram.com/data.br3w/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-slate-400/40 hover:bg-white/10">Instagram</a>
+        <a href="https://www.linkedin.com/in/micha-gersting-a17130245" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-slate-400/40 hover:bg-white/10">LinkedIn</a>
+        <a href="https://github.com/MGersting111" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-slate-400/40 hover:bg-white/10">GitHub</a>
       </div>
     </div>
   </footer>
 
-    <script>
-    const images = document.querySelectorAll('.slider-image');
-    let currentIndex = 0;
+  <script>
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-    document.getElementById('next').addEventListener('click', () => {
-      images[currentIndex].classList.add('hidden');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.remove('hidden');
-    });
+    revealElements.forEach((element) => observer.observe(element));
 
-    document.getElementById('prev').addEventListener('click', () => {
-      images[currentIndex].classList.add('hidden');
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      images[currentIndex].classList.remove('hidden');
+    const paprfreeImage = document.querySelector('.paprfree-image');
+    const paprfreeButtons = document.querySelectorAll('#paprfree-thumbs button');
+
+    paprfreeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        paprfreeImage.src = button.dataset.image;
+      });
     });
   </script>
 </body>
